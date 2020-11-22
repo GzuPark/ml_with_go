@@ -64,6 +64,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 <summary><strong>1장 : </strong> 데이터 수집 및 구성</summary>
 
 + [CSV 파일](./ch01/csv_files/)
++ [JSON](./ch01/json/)
 
 </details>
 
