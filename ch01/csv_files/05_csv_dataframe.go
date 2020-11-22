@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	// go get -u gonum.org/v1/gonum/...
 	// go get github.com/go-gota/gota/...
 	"github.com/go-gota/gota/dataframe"
 )
