@@ -13,6 +13,13 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 
 </details>
 
+<details>
+<summary><strong>2장 : </strong>행렬, 확률, 통계</summary>
+
++ [벡터](./ch02/vectors/)
+
+</details>
+
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15`
