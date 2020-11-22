@@ -11,16 +11,17 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
     - `make`
 
 #### MacOS
-- TBC
+- Not to need to prepare
 
 ## How to use
-
 
 #### Docker
 - Create docker container
     ```bash
-    (os)$ account=github_account
-    (os)$ make run ACCOUNT=${account} DIR=${PWD} [ GO_VERSION CONTAINER_NAME ]
+    # Windows
+    (os)$ make run ACCOUNT=[ GitHub ] DIR=${PWD} [ GO_VERSION CONTAINER_NAME ]
+    # MacOS
+    (os)$ make run ACCOUNT=[ GitHub ] DIR=$(pwd) [ GO_VERSION CONTAINER_NAME ]
     ```
 - Start and attach to the container
     ```bash
@@ -39,7 +40,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 ```bash
 (docker)$ go get package_url
 # example
-(docker)$ go get -u gonum.org/v1/gonum/...
+(docker)$ go get github.com/go-gota/gota/...
 ```
 
 #### Build
@@ -57,6 +58,14 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 # example
 (docker)$ ./01_read_csv_file
 ```
+
+## Contents
+<details>
+<summary><strong>1장 : </strong> 데이터 수집 및 구성</summary>
+
++ [CSV 파일](./ch01/csv_files/)
+
+</details>
 
 ## Reference
 - [[GitHub] Machine-Learning-With-Go](https://github.com/PacktPublishing/Machine-Learning-With-Go)

@@ -4,7 +4,7 @@ DIR :=
 ACCOUNT := 
 REPO = ml_with_go
 	
-win:
+run:
 ifeq ($(DIR),)
 	$(error You must define the CURRENT PATH)
 endif
