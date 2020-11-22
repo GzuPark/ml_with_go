@@ -66,6 +66,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 + [CSV 파일](./ch01/csv_files/)
 + [JSON](./ch01/json/)
 + [SQL 유형 데이터베이스](./ch01/sql_like_databases/) (_Required PostgreSQL_)
++ [Caching](./ch01/caching/)
 
 </details>
 
