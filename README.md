@@ -63,6 +63,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 <details>
 <summary><strong>1장 : </strong> 데이터 수집 및 구성</summary>
 
++ [Gopher 스타일로 데이터 처리하기](./ch01/handling_data_gopher_style/)
 + [CSV 파일](./ch01/csv_files/)
 + [JSON](./ch01/json/)
 + [SQL 유형 데이터베이스](./ch01/sql_like_databases/) (_Required PostgreSQL_)
