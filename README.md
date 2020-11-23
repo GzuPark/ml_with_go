@@ -18,6 +18,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 
 + [벡터](./ch02/vectors/)
 + [행렬](./ch02/matrices/)
++ [통계](./ch02/statistics/)
 
 </details>
 
