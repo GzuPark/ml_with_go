@@ -35,7 +35,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 <summary><strong>4장 : </strong>회귀분석</summary>
 
 + [선형 회귀분석](./ch04/linear_regression/)
-+ [다중 선형 회귀분석](./ch04/multiple_linear_regression/)
++ [다중 선형 회귀분석](./ch04/multiple_regression/)
 + [비선형 회귀분석](./ch04/nonlinear_regression/)
 
 </details>
