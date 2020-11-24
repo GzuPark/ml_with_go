@@ -44,6 +44,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 <summary><strong>5장 : </strong>분류</summary>
 
 + [로지스틱 회귀분석](./ch05/logistic_regression/)
++ [k-최근접 이웃 모델](./ch05/knn/)
 
 </details>
 
