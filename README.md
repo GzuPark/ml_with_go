@@ -27,6 +27,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 <summary><strong>3장 : </strong>평가 및 검증</summary>
 
 + [평가](./ch03/evaluation/)
++ [검증](./ch03/validation/)
 
 </details>
 

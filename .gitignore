@@ -107,3 +107,5 @@ $RECYCLE.BIN/
 *.json
 *.db
 *.png
+ch03/validation/training.csv
+ch03/validation/test.csv
