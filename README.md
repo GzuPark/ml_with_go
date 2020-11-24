@@ -31,6 +31,13 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 
 </details>
 
+<details>
+<summary><strong>4장 : </strong>회귀분석</summary>
+
++ [선형 회귀분석](./ch04/linear_regression/)
+
+</details>
+
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15`
