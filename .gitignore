@@ -109,3 +109,4 @@ $RECYCLE.BIN/
 *.png
 **/training.csv
 **/test.csv
+**/clean*.csv

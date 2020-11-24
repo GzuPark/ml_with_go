@@ -40,6 +40,13 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 
 </details>
 
+<details>
+<summary><strong>5장 : </strong>분류</summary>
+
++ [로지스틱 회귀분석](./ch05/logistic_regression/)
+
+</details>
+
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15`
