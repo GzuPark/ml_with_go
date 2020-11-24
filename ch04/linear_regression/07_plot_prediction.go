@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	f, err := os.Open("data/advertising.csv")
+	f, err := os.Open("../data/advertising.csv")
 	if err != nil {
 		log.Fatal(err)
 	}

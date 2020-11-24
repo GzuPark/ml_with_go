@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	f, err := os.Open("data/training.csv")
+	f, err := os.Open("../data/training.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -53,7 +53,7 @@ func main() {
 	r.Run()
 	fmt.Printf("\nRegression Formula:\n%v\n\n", r.Formula)
 
-	f, err = os.Open("data/test.csv")
+	f, err = os.Open("../data/test.csv")
 	if err != nil {
 		log.Fatal(err)
 	}

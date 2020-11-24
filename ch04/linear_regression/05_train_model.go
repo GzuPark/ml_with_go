@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	f, err := os.Open("data/training.csv")
+	f, err := os.Open("../data/training.csv")
 	if err != nil {
 		log.Fatal(err)
 	}

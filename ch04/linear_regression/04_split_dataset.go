@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	f, err := os.Open("data/advertising.csv")
+	f, err := os.Open("../data/advertising.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -43,7 +43,7 @@ func main() {
 		1: testDF,
 	}
 
-	for idx, setName := range []string{"data/training.csv", "data/test.csv"} {
+	for idx, setName := range []string{"../data/training.csv", "../data/test.csv"} {
 		f, err := os.Create(setName)
 		if err != nil {
 			log.Fatal(err)
