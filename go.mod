@@ -9,6 +9,7 @@ require (
 	github.com/gonum/lapack v0.0.0-20181123203213-e4cdc5a0bff9 // indirect
 	github.com/gonum/matrix v0.0.0-20181209220409-c518dec07be9 // indirect
 	github.com/lib/pq v1.8.0
+	github.com/mash/gokmeans v0.0.0-20170215130432-ea22cff45f59 // indirect
 	github.com/montanaflynn/stats v0.6.3
 	github.com/pa-m/sklearn v0.0.0-20200711083454-beb861ee48b1
 	github.com/patrickmn/go-cache v2.1.0+incompatible

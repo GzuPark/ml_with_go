@@ -56,6 +56,7 @@
 
 + [유사도 측정하기](./ch06/distance/)
 + [클러스터링 기법 평가하기](./ch06/evaluating/)
++ [k-평균 클러스터링](./ch06/kmeans/)
 
 </details>
 
