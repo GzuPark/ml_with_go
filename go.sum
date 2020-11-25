@@ -9,6 +9,8 @@ github.com/boltdb/bolt v1.3.1/go.mod h1:clJnj/oiGkjum5o1McbSZDSLxVThjynRyGBgiAx2
 github.com/boombuler/barcode v1.0.0/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
 github.com/chewxy/math32 v1.0.4/go.mod h1:dOB2rcuFrCn6UHrze36WSLVPKtzPMRAQvBvUwkSsLqs=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/drewlanenga/govector v0.0.0-20160727150047-f69e9f02317e h1:H+R6TS5huNAykR6HMHmY7lqrgEfnyWgm7Ynn38BSBLw=
+github.com/drewlanenga/govector v0.0.0-20160727150047-f69e9f02317e/go.mod h1:AbP/uRrjZFATEwl0P2DHePteIMZRWHEJBWBmMmLdCkk=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/fatih/structtag v1.2.0/go.mod h1:mBJUNpUnHmRKrKlQQlmCrh5PuhftFbNv8Ys4/aAZl94=
 github.com/fogleman/gg v1.2.1-0.20190220221249-0403632d5b90/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
@@ -36,6 +38,8 @@ github.com/jung-kurt/gofpdf v1.10.1 h1:mbprTswkr0n86clAmJ4NGCFC4fdGySCAshWzrYb3x
 github.com/jung-kurt/gofpdf v1.10.1/go.mod h1:s/VXv+TdctEOx2wCEguezYaR7f0OwUAd6H9VGfRkcSs=
 github.com/lib/pq v1.8.0 h1:9xohqzkUwzR4Ga4ivdTcawVS89YSDVxXMa3xJX3cGzg=
 github.com/lib/pq v1.8.0/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
+github.com/lytics/anomalyzer v0.0.0-20151102000650-13cee1061701 h1:liUjIx6L9ZQ/Ilt4c7CZ1sd4zDv2X9R+uw01evYA8o0=
+github.com/lytics/anomalyzer v0.0.0-20151102000650-13cee1061701/go.mod h1:zuQaM4YroHR9LIvA+FNOoy2VQTSxFvNrAcqeVXRoUyU=
 github.com/mash/gokmeans v0.0.0-20170215130432-ea22cff45f59 h1:C7rqeTVPDC/0QZFxfsMvS2y66WjMxQogK8/PTy9Jo0A=
 github.com/mash/gokmeans v0.0.0-20170215130432-ea22cff45f59/go.mod h1:nxv+mR7KuDZRAmEjsCFBQNtWcIty99qUn2Ycbgcns5c=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=

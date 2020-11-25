@@ -66,6 +66,7 @@
 + [시계열 데이터 표현하기](./ch07/representing_time_series/)
 + [시계열 통계](./ch07/ts_statistics/)
 + [자동 회귀 모델](./ch07/auto_regressive/)
++ [이상 감지](./ch07/anomaly_detection/)
 
 </details>
 
