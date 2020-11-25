@@ -110,3 +110,4 @@ $RECYCLE.BIN/
 **/training.csv
 **/test.csv
 **/clean*.csv
+**/*diff*.csv
