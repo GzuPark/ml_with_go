@@ -51,6 +51,13 @@
 
 </details>
 
+<details>
+<summary><strong>6장 : </strong>클러스터링</summary>
+
++ [유사도 측정하기](./ch06/distance/)
+
+</details>
+
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15`
