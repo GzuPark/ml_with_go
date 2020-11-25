@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
-	// go get github.com/sajari/regression@d629f2e9549b2bb5f7c5b2bcfa716f074feb2d82
+
 	"github.com/sajari/regression"
 )
 

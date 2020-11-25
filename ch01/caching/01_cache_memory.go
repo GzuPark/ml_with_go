@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
-	// go get github.com/patrickmn/go-cache
+
 	cache "github.com/patrickmn/go-cache"
 )
 

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	// go get github.com/boltdb/bolt/...
+
 	"github.com/boltdb/bolt"
 )
 

@@ -1,5 +1,6 @@
 # Machine Learning with Go
-Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
+- Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
+- 특히, 버전이 맞지 않아 [책](http://acornpub.co.kr/book/ml-with-go)과 [코드](https://github.com/PacktPublishing/Machine-Learning-With-Go)를 그대로 실행하지 못했던 것을 수정
 
 ## Contents
 <details>
@@ -60,7 +61,7 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
     - `chocolatey`
     - `make`
 
-#### MacOS
+#### MacOS & Linux
 - Not to need to prepare
 
 ## How to use
@@ -69,9 +70,9 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 - Create docker container
     ```bash
     # Windows
-    (os)$ make run ACCOUNT=[ GitHub ] DIR=${PWD} [ GO_VERSION CONTAINER_NAME ]
+    (os)$ make run ACCOUNT=GitHub DIR=${PWD} [ GO_VERSION CONTAINER_NAME ]
     # MacOS
-    (os)$ make run ACCOUNT=[ GitHub ] DIR=$(pwd) [ GO_VERSION CONTAINER_NAME ]
+    (os)$ make run ACCOUNT=GitHub DIR=$(pwd) [ GO_VERSION CONTAINER_NAME ]
     ```
 - Start and attach to the container
     ```bash
@@ -87,11 +88,8 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
     ```
 
 #### Installation packages
-```bash
-(docker)$ go get package_url
-# example
-(docker)$ go get github.com/go-gota/gota/...
-```
+- Using [Go Modules](https://github.com/golang/go/wiki/Modules)
+- Build를 할 때 `go.mod`를 참조하여 자동으로 package 설치
 
 #### Build
 ```bash
@@ -110,4 +108,6 @@ Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
 ```
 
 ## Reference
+- [[Book] (번역) Go를 활용한 머신 러닝](http://acornpub.co.kr/book/ml-with-go)
+- [[Book] Machine Learning With Go](https://www.packtpub.com/product/machine-learning-with-go/9781785882104)
 - [[GitHub] Machine-Learning-With-Go](https://github.com/PacktPublishing/Machine-Learning-With-Go)

@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
-	// go get github.com/pa-m/sklearn/...
+
 	"github.com/pa-m/sklearn/linear_model"
 	"gonum.org/v1/gonum/mat"
 )

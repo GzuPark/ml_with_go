@@ -7,7 +7,6 @@ import (
 
 	"gonum.org/v1/gonum/stat"
 	"github.com/go-gota/gota/dataframe"
-	// go get github.com/montanaflynn/stats
 	"github.com/montanaflynn/stats"
 )
 

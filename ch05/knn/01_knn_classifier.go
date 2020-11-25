@@ -4,10 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math"
-	// go get github.com/sjwhitworth/golearn
-	// cd $GOPATH/src/github.com/sjwhitworth/golearn
-	// git reset --hard 6fed29ee
-	// go get ./...
+
 	"github.com/sjwhitworth/golearn/base"
 	"github.com/sjwhitworth/golearn/evaluation"
 	"github.com/sjwhitworth/golearn/knn"

@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"os"
-	// go get github.com/lib/pq
+
 	_ "github.com/lib/pq"
 )
 

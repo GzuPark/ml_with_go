@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	// go get github.com/go-gota/gota/...
+
 	"github.com/go-gota/gota/dataframe"
 )
 
