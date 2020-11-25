@@ -55,6 +55,7 @@
 <summary><strong>6장 : </strong>클러스터링</summary>
 
 + [유사도 측정하기](./ch06/distance/)
++ [클러스터링 기법 평가하기](./ch06/evaluating/)
 
 </details>
 
