@@ -3,6 +3,7 @@ CONTAINER_NAME = mlgo
 DIR := 
 ACCOUNT := 
 REPO = ml_with_go
+PROJECT = /go/src/github.com/${ACCOUNT}/${REPO}
 	
 run:
 ifeq ($(DIR),)
@@ -14,8 +15,9 @@ ifeq ($(ACCOUNT),)
 endif
 
 	@docker container run -it --name=${CONTAINER_NAME} \
-		-v ${DIR}:/go/src/github.com/${ACCOUNT}/${REPO} \
-		-w /go/src/github.com/${ACCOUNT}/${REPO} \
+		-v ${DIR}:${PROJECT} \
+		-w ${PROJECT} \
+		-e MLGO=${PROJECT} \
 		golang:${GO_VERSION} \
 		/bin/bash
 

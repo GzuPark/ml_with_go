@@ -88,6 +88,10 @@
     ```
 
 #### Installation packages
+```bash
+# location with `go.mod` file
+(docker)$ go list ./...
+```
 - Using [Go Modules](https://github.com/golang/go/wiki/Modules)
 - Build를 할 때 `go.mod`를 참조하여 자동으로 package 설치
 
@@ -105,6 +109,18 @@
 (docker)$ ./tutorial
 # example
 (docker)$ ./01_read_csv_file
+```
+
+#### Aumotation
+```bash
+# build in anywhere
+(docker)$ $MLGO/run.sh build
+# build specific chapter in anywhere
+(docker)$ $MLGO/run.sh build ch01
+# clean up binary files in anywhere
+(docker)$ $MLGO/run.sh clean
+# clean up specific chapter in anywhere
+(docker)$ $MLGO/run.sh clean ch01
 ```
 
 ## Reference
