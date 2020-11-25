@@ -60,6 +60,13 @@
 
 </details>
 
+<details>
+<summary><strong>7장 : </strong>시계열 분석 및 이상 감지</summary>
+
++ [시계열 데이터 표현하기](./ch07/representing_time_series/)
+
+</details>
+
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15`
