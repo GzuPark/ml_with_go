@@ -111,3 +111,4 @@ data/*.json
 data/*diff*.csv
 data/*test.csv
 data/*training.csv
+!data/iris*
