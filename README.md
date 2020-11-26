@@ -70,6 +70,13 @@
 
 </details>
 
+<details>
+<summary><strong>8장 : </strong>신경망 및 딥러닝</summary>
+
++ [간단한 신경망 구축하기](./ch08/simple_neural_network/)
+
+</details>
+
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15`
