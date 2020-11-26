@@ -4,6 +4,7 @@ import (
 	"image/color"
 	"log"
 	"os"
+	"path/filepath"
 
 	"gonum.org/v1/gonum/floats"
 	"gonum.org/v1/plot"
@@ -13,6 +14,10 @@ import (
 )
 
 var (
+	fileName = "fleet_data.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	suffix = "fleet_data_clustert"
+
 	cOne = []float64{180.02, 18.29}
 	cTwo = []float64{50.05, 8.83}
 )
@@ -78,7 +83,18 @@ func main() {
 
 	p.Add(sOne, sTwo)
 
-	if err := p.Save(4*vg.Inch, 4*vg.Inch, "result/fleet_data_clusters.png"); err != nil {
+	if err := p.Save(4*vg.Inch, 4*vg.Inch, plotPath("")); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func plotPath(name string) string {
+	saveName := name + suffix + ".png"
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+			log.Fatal(err)
+	}
+	savePath := filepath.Join(dir, "result", saveName)
+
+	return savePath
 }

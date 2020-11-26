@@ -6,13 +6,19 @@ import (
 	"io"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"github.com/mash/gokmeans"
 )
 
+var (
+	fileName = "fleet_data.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	f, err := os.Open("../data/fleet_data.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

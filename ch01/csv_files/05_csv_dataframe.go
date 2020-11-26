@@ -4,12 +4,18 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/go-gota/gota/dataframe"
 )
 
+var (
+	fileName = "iris_labeled.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	irisFile, err := os.Open("data/iris_labeled.csv")
+	irisFile, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
@@ -18,8 +19,13 @@ type CSVRecord struct {
 	ParseError  error
 }
 
+var (
+	fileName = "iris_mixed_types.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	f, err := os.Open("data/iris_mixed_types.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

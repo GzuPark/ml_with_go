@@ -4,8 +4,16 @@ import (
 	"encoding/csv"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
+)
+
+var (
+	fileName = "loan_data.csv"
+	saveName = "clean_loan_data.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	savePath = filepath.Join(os.Getenv("MLGO"), "data", saveName)
 )
 
 const (
@@ -14,7 +22,7 @@ const (
 )
 
 func main() {
-	f, err := os.Open("../data/loan_data.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,7 +36,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	f, err = os.Create("../data/clean_loan_data.csv")
+	f, err = os.Create(savePath)
 	if err != nil {
 		log.Fatal(err)
 	}

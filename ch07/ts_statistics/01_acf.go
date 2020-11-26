@@ -5,13 +5,19 @@ import (
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 
 	"github.com/go-gota/gota/dataframe"
 	"gonum.org/v1/gonum/stat"
 )
 
+var (
+	fileName = "AirPassengers.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	f, err := os.Open("../data/AirPassengers.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

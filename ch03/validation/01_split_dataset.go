@@ -4,12 +4,22 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/go-gota/gota/dataframe"
 )
 
+var (
+	fileName = "diabetes.csv"
+	trainingName = "diabetes_training.csv"
+	testName = "diabetes_test.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
+	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+)
+
 func main() {
-	f, err := os.Open("diabetes.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -43,7 +53,7 @@ func main() {
 		1: testDF,
 	}
 
-	for idx, setName := range []string{"training.csv", "test.csv"} {
+	for idx, setName := range []string{trainingPath, testPath} {
 		f, err := os.Create(setName)
 		if err != nil {
 			log.Fatal(err)

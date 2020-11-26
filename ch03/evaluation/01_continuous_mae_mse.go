@@ -7,11 +7,17 @@ import (
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
+var (
+	fileName = "continuous_data.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	f, err := os.Open("data/continuous_data.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

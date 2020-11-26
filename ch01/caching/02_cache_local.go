@@ -3,12 +3,19 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/boltdb/bolt"
 )
 
+var (
+	dbName = "embedded.db"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", dbName)
+)
+
 func main() {
-	db, err := bolt.Open("embedded.db", 0600, nil)
+	db, err := bolt.Open(filePath, 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -6,13 +6,21 @@ import (
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"github.com/sajari/regression"
 )
 
+var (
+	trainingName = "advertising_training.csv"
+	testName = "advertising_test.csv"
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
+	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+)
+
 func main() {
-	f, err := os.Open("../data/training.csv")
+	f, err := os.Open(trainingPath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -57,7 +65,7 @@ func main() {
 	r.Run()
 	fmt.Printf("\nRegression Formula:\n%v\n\n", r.Formula)
 
-	f, err = os.Open("../data/test.csv")
+	f, err = os.Open(testPath)
 	if err != nil {
 		log.Fatal(err)
 	}

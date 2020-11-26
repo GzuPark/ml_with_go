@@ -4,6 +4,7 @@ import (
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 
 	"gonum.org/v1/gonum/stat"
 	"gonum.org/v1/plot"
@@ -13,8 +14,14 @@ import (
 	"github.com/go-gota/gota/dataframe"
 )
 
+var (
+	fileName = "AirPassengers.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	suffix = "acf"
+)
+
 func main() {
-	f, err := os.Open("../data/AirPassengers.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -52,7 +59,7 @@ func main() {
 
 	p.Add(b)
 
-	if err := p.Save(8*vg.Inch, 4*vg.Inch, "result/acf.png"); err != nil {
+	if err := p.Save(8*vg.Inch, 4*vg.Inch, plotPath("")); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -75,4 +82,15 @@ func acf(x []float64, lag int) float64 {
 	}
 
 	return numerator / denominator
+}
+
+func plotPath(name string) string {
+	saveName := name + suffix + ".png"
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+			log.Fatal(err)
+	}
+	savePath := filepath.Join(dir, "result", saveName)
+
+	return savePath
 }

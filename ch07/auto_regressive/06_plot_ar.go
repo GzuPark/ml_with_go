@@ -6,11 +6,20 @@ import (
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
 	"gonum.org/v1/plot/vg"
+)
+
+var (
+	fileName = "log_diff_series.csv"
+	originFileName = "AirPassengers.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	originFilePath = filepath.Join(os.Getenv("MLGO"), "data", originFileName)
+	suffix = "predicted_passengers_ts"
 )
 
 const (
@@ -20,7 +29,7 @@ const (
 )
 
 func main() {
-	f, err := os.Open("../data/log_diff_series.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -54,7 +63,7 @@ func main() {
 		predictions = append(predictions, intercept + coeff1 * lagOne + coeff2 * lagTwo)
 	}
 
-	f, err = os.Open("../data/AirPassengers.csv")
+	f, err = os.Open(originFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -124,7 +133,18 @@ func main() {
 	p.Legend.Add("Observed", lObs)
 	p.Legend.Add("Predicted", lPred)
 
-	if err := p.Save(10*vg.Inch, 4*vg.Inch, "result/predicted_passengers_ts.png"); err != nil {
+	if err := p.Save(10*vg.Inch, 4*vg.Inch, plotPath("")); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func plotPath(name string) string {
+	saveName := name + suffix + ".png"
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+			log.Fatal(err)
+	}
+	savePath := filepath.Join(dir, "result", saveName)
+
+	return savePath
 }

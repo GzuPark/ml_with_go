@@ -7,11 +7,22 @@ import (
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
+var (
+	testName = "clean_loan_test.csv"
+	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+)
+
+const (
+	m1 = 13.65
+	m2 = -4.89
+)
+
 func main() {
-	f, err := os.Open("../data/test.csv")
+	f, err := os.Open(testPath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -54,20 +65,20 @@ func main() {
 		line++
 	}
 
-	var turePosNeg int
+	var truePosNeg int
 
 	for idx, oVal := range observed {
 		if oVal == predicted[idx] {
-			turePosNeg++
+			truePosNeg++
 		}
 	}
 
-	accuracy := float64(turePosNeg) / float64(len(observed))
+	accuracy := float64(truePosNeg) / float64(len(observed))
 	fmt.Printf("\nAccuracy = %.2f\n\n", accuracy)
 }
 
 func predict(score float64) float64 {
-	p := 1 / (1 + math.Exp(-13.64 * score + 4.89))
+	p := 1 / (1 + math.Exp(-1 * m1 * score -1 * m2))
 
 	if p >= 0.5 {
 		return 1.0

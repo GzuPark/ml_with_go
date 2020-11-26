@@ -6,11 +6,24 @@ import (
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
+var (
+	testName = "advertising_test.csv"
+	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+)
+
+const (
+	intercept = 2.949
+	coefTV = 0.047
+	coefRadio = 0.180
+	coefNewpaper = -0.001
+)
+
 func main() {
-	f, err := os.Open("../data/test.csv")
+	f, err := os.Open(testPath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -58,5 +71,5 @@ func main() {
 }
 
 func predict(tv, radio, newspaper float64) float64 {
-	return 2.949 + 0.047*tv + 0.180*radio - 0.001*newspaper
+	return intercept + coefTV * tv + coefRadio * radio + coefNewpaper * newspaper
 }

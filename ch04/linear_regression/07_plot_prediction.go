@@ -4,6 +4,7 @@ import (
 	"image/color"
 	"log"
 	"os"
+	"path/filepath"
 
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
@@ -11,8 +12,19 @@ import (
 	"github.com/go-gota/gota/dataframe"
 )
 
+var (
+	fileName = "advertising.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	suffix = "regression_line"
+)
+
+const (
+	intercept = 7.0688
+	slope = 0.0489
+)
+
 func main() {
-	f, err := os.Open("../data/advertising.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -56,11 +68,23 @@ func main() {
 	l.LineStyle.Color = color.RGBA{B: 255, A: 255}
 
 	p.Add(s, l)
-	if err := p.Save(4*vg.Inch, 4*vg.Inch, "result/regression_line.png"); err != nil {
+
+	if err := p.Save(4*vg.Inch, 4*vg.Inch, plotPath("")); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func predict(tv float64) float64 {
-	return 7.0688 + tv*0.0489
+	return intercept + tv * slope
+}
+
+func plotPath(name string) string {
+	saveName := name + suffix + ".png"
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+			log.Fatal(err)
+	}
+	savePath := filepath.Join(dir, "result", saveName)
+
+	return savePath
 }

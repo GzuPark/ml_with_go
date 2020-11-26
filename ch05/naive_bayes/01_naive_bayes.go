@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/sjwhitworth/golearn/base"
 	"github.com/sjwhitworth/golearn/evaluation"
@@ -10,8 +12,14 @@ import (
 	"github.com/sjwhitworth/golearn/naive"
 )
 
+var (
+	trainingName = "clean_loan_training.csv"
+	testName = "clean_loan_test.csv"
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
+	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+)
 func main() {
-	trainingData, err := base.ParseCSVToInstances("../data/training.csv", true)
+	trainingData, err := base.ParseCSVToInstances(trainingPath, true)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -19,7 +27,7 @@ func main() {
 	cls := naive.NewBernoulliNBClassifier()
 	cls.Fit(convertToBinary(trainingData))
 
-	testData, err := base.ParseCSVToInstances("../data/test.csv", true)
+	testData, err := base.ParseCSVToInstances(testPath, true)
 	if err != nil {
 		log.Fatal(err)
 	}

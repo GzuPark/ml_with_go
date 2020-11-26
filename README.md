@@ -133,13 +133,17 @@
 #### Aumotation
 ```bash
 # build in anywhere
-(docker)$ $MLGO/run.sh build
+(docker)$ $MLGO/automation.sh build
 # build specific chapter in anywhere
-(docker)$ $MLGO/run.sh build ch01
+(docker)$ $MLGO/automation.sh build ch01
 # clean up binary files in anywhere
-(docker)$ $MLGO/run.sh clean
+(docker)$ $MLGO/automation.sh clean
 # clean up specific chapter in anywhere
-(docker)$ $MLGO/run.sh clean ch01
+(docker)$ $MLGO/automation.sh clean ch01
+# execute binary files in anywhere
+(docker)$ $MLGO/automation.sh run
+# execute specific chapter in anywhere
+(docker)$ $MLGO/automation.sh run ch01
 ```
 
 ## Reference

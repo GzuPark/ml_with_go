@@ -4,14 +4,20 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"github.com/go-gota/gota/dataframe"
 	"github.com/sajari/regression"
 )
 
+var (
+	fileName = "log_diff_series.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	f, err := os.Open("../data/log_diff_series.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

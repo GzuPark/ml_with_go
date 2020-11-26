@@ -5,14 +5,21 @@ import (
 	"log"
 	"math"
 	"math/rand"
+	"os"
+	"path/filepath"
 
 	"github.com/sjwhitworth/golearn/base"
 	"github.com/sjwhitworth/golearn/evaluation"
 	"github.com/sjwhitworth/golearn/trees"
 )
 
+var (
+	fileName = "iris.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	rawData, err := base.ParseCSVToInstances("../data/iris.csv", true)
+	rawData, err := base.ParseCSVToInstances(filePath, true)
 	if err != nil {
 		log.Fatal(err)
 	}

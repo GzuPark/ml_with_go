@@ -7,14 +7,20 @@ import (
 	"math"
 	"math/rand"
 	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 
 	"gonum.org/v1/gonum/mat"
 )
 
+var (
+	trainingName = "clean_loan_training.csv"
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
+)
+
 func main() {
-	f, err := os.Open("../data/training.csv")
+	f, err := os.Open(trainingPath)
 	if err != nil {
 		log.Fatal(err)
 	}

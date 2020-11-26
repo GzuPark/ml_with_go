@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"path/filepath"
 
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
@@ -10,8 +11,14 @@ import (
 	"github.com/go-gota/gota/dataframe"
 )
 
+var (
+	fileName = "iris.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	suffix = "boxplots"
+)
+
 func main() {
-	f, err := os.Open("data/iris.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -46,7 +53,18 @@ func main() {
 	// 지정된 이름을 사용해 X-axis 이름 설정
 	p.NominalX("sepal_length", "sepal_width", "petal_length", "petal_width")
 
-	if err := p.Save(6*vg.Inch, 8*vg.Inch, "boxplots.png"); err != nil {
+	if err := p.Save(6*vg.Inch, 8*vg.Inch, plotPath("")); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func plotPath(name string) string {
+	saveName := name + suffix + ".png"
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+			log.Fatal(err)
+	}
+	savePath := filepath.Join(dir, "result", saveName)
+
+	return savePath
 }

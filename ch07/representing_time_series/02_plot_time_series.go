@@ -4,6 +4,7 @@ import (
 	"image/color"
 	"log"
 	"os"
+	"path/filepath"
 
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
@@ -11,8 +12,14 @@ import (
 	"github.com/go-gota/gota/dataframe"
 )
 
+var (
+	fileName = "AirPassengers.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	suffix = "air_passengers_ts"
+)
+
 func main() {
-	f, err := os.Open("../data/AirPassengers.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -46,7 +53,18 @@ func main() {
 
 	p.Add(l)
 
-	if err := p.Save(10*vg.Inch, 4*vg.Inch, "result/air_passengers_ts.png"); err != nil {
+	if err := p.Save(10*vg.Inch, 4*vg.Inch, plotPath("")); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func plotPath(name string) string {
+	saveName := name + suffix + ".png"
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+			log.Fatal(err)
+	}
+	savePath := filepath.Join(dir, "result", saveName)
+
+	return savePath
 }

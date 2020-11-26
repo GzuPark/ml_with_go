@@ -5,9 +5,16 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 )
 
 const citiBikeURL = "https://gbfs.citibikenyc.com/gbfs/en/station_status.json"
+
+var (
+	fileName = "citibike.json"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
 
 type stationData struct {
 	LastUpdated int `json:"lat_updated"`
@@ -57,7 +64,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if err := ioutil.WriteFile("citibike.json", outputData, 0644); err != nil {
+	if err := ioutil.WriteFile(filePath, outputData, 0644); err != nil {
 		log.Fatal(err)
 	}
 }

@@ -4,14 +4,20 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 
 	"gonum.org/v1/gonum/stat"
 	"github.com/go-gota/gota/dataframe"
 	"github.com/montanaflynn/stats"
 )
 
+var (
+	fileName = "iris.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+)
+
 func main() {
-	f, err := os.Open("data/iris.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

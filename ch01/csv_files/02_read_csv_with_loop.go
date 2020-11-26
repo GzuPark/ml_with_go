@@ -6,10 +6,16 @@ import (
 	"io"
 	"log"
 	"os"
+	"path/filepath"
+)
+
+var (
+	fileName = "iris_without_header.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
 )
 
 func main() {
-	f, err := os.Open("data/iris.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

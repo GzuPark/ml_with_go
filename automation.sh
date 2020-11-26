@@ -8,13 +8,13 @@ cnt=0
 
 check_files() {
     cd ${workdir}
-    dirs=$(ls -d */)
+    dirs=$(ls -d */ | grep 'ch')
 
     # chapters
     for dir in ${dirs}; do
         ch="${workdir}/${dir}"
         cd ${ch}
-        subs=$(ls -d */ | grep -v '^\(data\)')
+        subs=$(ls -d */)
 
         # subjects
         for sub in ${subs}; do
@@ -25,7 +25,7 @@ check_files() {
             then
                 files=$(ls -d -- [0-9][0-9]*.go)
 
-            elif [[ "$action" = "clean" ]]
+            elif [[ "$action" = "clean" || "$action" = "run" ]]
             then
                 files=$(ls -d -- [0-9][0-9]* | grep -v '.\.go')
             fi
@@ -85,27 +85,50 @@ clean() {
     done
 }
 
+run() {
+    for file in ${target[@]}; do
+        if [ -f ${file} ]
+        then
+            # directory
+            cd ${file%/*}
+
+            if [[ -z "$chapter" ]]
+            then 
+                echo "Runned ${file}"
+                # file
+                ./${file##*/}
+                ((cnt++))
+            elif [[ $file == *"$chapter"* ]]
+            then
+                echo "Runned ${file}"
+                ./${file##*/}
+                ((cnt++))
+            fi
+        fi
+    done
+}
 
 check_files
 
 if [[ "$action" = "build" ]]
 then
     build
-    echo
-    echo "Total built: $cnt"
+    echo; echo "Total built: $cnt"
 elif [[ "$action" = "clean" ]]
 then
     clean
-    echo
-    echo "Total cleaned: $cnt"
+    echo; echo "Total cleaned: $cnt"
+elif [[ "$action" = "run" ]]
+then
+    run
+    echo; echo "Total runuted: $cnt"
 else
-    echo
-    echo "Assign 1st argument: ( build || clean )"
-    echo
-    echo "Example:"
+    echo; echo "Assign 1st argument: ( build || clean || run )"
+    echo; echo "Example:"
     echo "    \$MLGO/run.sh build"
     echo "    \$MLGO/run.sh clean"
+    echo "    \$MLGO/run.sh run"
     echo "    \$MLGO/run.sh build ch01"
     echo "    \$MLGO/run.sh clean ch01"
-    echo
+    echo "    \$MLGO/run.sh run ch01"; echo
 fi

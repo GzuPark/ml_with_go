@@ -104,10 +104,10 @@ $RECYCLE.BIN/
 
 [0-9][0-9]_*
 ![0-9][0-9]_*.go
-*.json
-*.db
-*.png
-**/training.csv
-**/test.csv
-**/clean*.csv
-**/*diff*.csv
+**/result/*.png
+data/clean*.csv
+data/*.db
+data/*.json
+data/*diff*.csv
+data/*test.csv
+data/*training.csv

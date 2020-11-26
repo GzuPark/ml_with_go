@@ -4,18 +4,22 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 
 	"gonum.org/v1/gonum/floats"
 	"github.com/go-gota/gota/dataframe"
 )
 
 var (
+	fileName = "fleet_data.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+
 	cOne = []float64{180.02, 18.29}
 	cTwo = []float64{50.05, 8.83}
 )
 
 func main() {
-	f, err := os.Open("../data/fleet_data.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}

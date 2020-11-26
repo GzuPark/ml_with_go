@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"gonum.org/v1/plot"
@@ -13,8 +14,14 @@ import (
 	"github.com/sajari/regression"
 )
 
+var (
+	fileName = "log_diff_series.csv"
+	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	suffix = "log_diff_pacf"
+)
+
 func main() {
-	f, err := os.Open("../data/log_diff_series.csv")
+	f, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -52,7 +59,7 @@ func main() {
 
 	p.Add(b)
 
-	if err := p.Save(8*vg.Inch, 4*vg.Inch, "result/log_diff_pacf.png"); err != nil {
+	if err := p.Save(8*vg.Inch, 4*vg.Inch, plotPath("")); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -80,4 +87,15 @@ func pacf(x []float64, lag int) float64 {
 	r.Run()
 
 	return r.Coeff(lag)
+}
+
+func plotPath(name string) string {
+	saveName := name + suffix + ".png"
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+			log.Fatal(err)
+	}
+	savePath := filepath.Join(dir, "result", saveName)
+
+	return savePath
 }
