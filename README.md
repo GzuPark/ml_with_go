@@ -75,6 +75,7 @@
 
 + [간단한 신경망 구축하기](./ch08/simple_neural_network/)
 + [간단한 신경망 활용하기](./ch08/utilizing_simple_neural_network/)
++ [딥러닝](./ch08/deep_learning/) | [[필독]](./ch08/deep_learning/README.md)
 
 </details>
 

@@ -18,6 +18,7 @@ require (
 	github.com/sajari/regression v1.0.1
 	github.com/sjwhitworth/golearn v0.0.0-20200908220655-6fed29ee9c0b
 	github.com/smartystreets/goconvey v1.6.4 // indirect
+	github.com/tensorflow/tensorflow v1.3.0-rc1.0.20170924153245-0d1e4cf5b7dc // indirect
 	gonum.org/v1/gonum v0.8.1
 	gonum.org/v1/plot v0.0.0-20190615073203-9aa86143727f
 )

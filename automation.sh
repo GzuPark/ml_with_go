@@ -27,12 +27,15 @@ check_files() {
 
             elif [[ "$action" = "clean" || "$action" = "run" ]]
             then
-                files=$(ls -d -- [0-9][0-9]* | grep -v '.\.go')
+                files=$(ls -d -- [0-9][0-9]* | grep -v '.\.go' | grep -v 'README')
             fi
             
             # files
             for f in ${files}; do
-                target+=(${s}${f})
+                if [[ "$f" != *"tf_image"* ]]
+                then
+                    target+=(${s}${f})
+                fi
             done
 
             cd ${ch}
