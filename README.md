@@ -75,13 +75,13 @@
 
 + [간단한 신경망 구축하기](./ch08/simple_neural_network/)
 + [간단한 신경망 활용하기](./ch08/utilizing_simple_neural_network/)
-+ [딥러닝](./ch08/deep_learning/) | [[필독]](./ch08/deep_learning/README.md)
++ [딥러닝](./ch08/deep_learning/) | [[How to use]](./ch08/deep_learning/README.md)
 
 </details>
 
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
-- `Golang >= 1.15`
+- `Golang >= 1.15` (_In the container_)
 
 #### Windows
 - Required
@@ -95,33 +95,25 @@
 ## How to use
 
 #### Docker
-- Create docker container
+- Compose up docker containers
     ```bash
-    # Windows
-    (os)$ make run ACCOUNT=GitHub DIR=${PWD} [ GO_VERSION CONTAINER_NAME ]
-    # MacOS
-    (os)$ make run ACCOUNT=GitHub DIR=$(pwd) [ GO_VERSION CONTAINER_NAME ]
+    # Default
+    (os)$ make up
+    # With build go binaries
+    (os)$ make up PKGS=1
     ```
-- Start and attach to the container
+- Start and enter the execution mode to the container
     ```bash
-    (os)$ make start [ CONTAINER_NAME ]
+    (os)$ make run
     ```
-- Stop the container
+- Stop docker containers
     ```bash
-    (os)$ make stop [ CONTAINER_NAME ]
+    (os)$ make stop
     ```
-- Remove the container
+- Remove docker compose
     ```bash
-    (os)$ make del [ CONTAINER_NAME ]
+    (os)$ make down
     ```
-
-#### Installation packages
-```bash
-# location with `go.mod` file
-(docker)$ go list ./...
-```
-- Using [Go Modules](https://github.com/golang/go/wiki/Modules)
-- Build를 할 때 `go.mod`를 참조하여 자동으로 package 설치
 
 #### Build
 ```bash

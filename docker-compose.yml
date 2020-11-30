@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mlgo:
+    image: golang:1.15.5
+    container_name: mlgo
+    environment:
+      MLGO: /go/src/mlgo
+    volumes:
+      - ./:/go/src/mlgo
+    working_dir: /go/src/mlgo
+    networks:
+      - mlgo_net
+    stdin_open: true
+    tty: true
+
+networks:
+  mlgo_net:
+    driver: bridge

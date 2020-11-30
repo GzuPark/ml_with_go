@@ -1,18 +1,18 @@
 #!/bin/bash
 
-action=$1
-chapter=$2
-workdir=$(echo $MLGO)
-target=()
-cnt=0
+ACTION=$1
+CHAPTER=$2
+WORKDIR=$(echo $MLGO)
+TARGET=()
+CNT=0
 
 check_files() {
-    cd ${workdir}
+    cd ${WORKDIR}
     dirs=$(ls -d */ | grep 'ch')
 
     # chapters
     for dir in ${dirs}; do
-        ch="${workdir}/${dir}"
+        ch="${WORKDIR}/${dir}"
         cd ${ch}
         subs=$(ls -d */)
 
@@ -21,91 +21,91 @@ check_files() {
             s="${ch}${sub}"
             cd ${s}
 
-            if [[ "$action" = "build" ]]
+            if [[ "$ACTION" = "build" ]]
             then
                 files=$(ls -d -- [0-9][0-9]*.go)
 
-            elif [[ "$action" = "clean" || "$action" = "run" ]]
+            elif [[ "$ACTION" = "clean" || "$ACTION" = "run" ]]
             then
-                files=$(ls -d -- [0-9][0-9]* | grep -v '.\.go' | grep -v 'README')
+                files=$(ls -d -- [0-9][0-9]* | grep -v '.\.go' | grep -v '.\.md')
             fi
             
             # files
             for f in ${files}; do
-                if [[ "$f" != *"tf_image"* ]]
+                if [[ ${s} != *"ch09"* ]]
                 then
-                    target+=(${s}${f})
+                    TARGET+=(${s}${f})
                 fi
             done
 
             cd ${ch}
         done
 
-        cd ${workdir}
+        cd ${WORKDIR}
     done
 }
 
 build() {
-    for file in ${target[@]}; do
+    for file in ${TARGET[@]}; do
         if [ -f ${file} ]
         then
             # https://tldp.org/LDP/LG/issue18/bash.html
             # directory
             cd ${file%/*}
 
-            if [[ -z "$chapter" ]]
+            if [[ -z "$CHAPTER" ]]
             then 
                 echo "Build ${file}"
                 # file
                 go build ${file##*/}
-                ((cnt++))
-            elif [[ $file == *"$chapter"* ]]
+                ((CNT++))
+            elif [[ $file == *"$CHAPTER"* ]]
             then
                 echo "Build ${file}"
                 go build ${file##*/}
-                ((cnt++))
+                ((CNT++))
             fi
         fi
     done
 }
 
 clean() {
-    for file in ${target[@]}; do
+    for file in ${TARGET[@]}; do
         if [ -f ${file} ]
         then
-            if [[ -z "$chapter" ]]
+            if [[ -z "$CHAPTER" ]]
             then 
                 echo "Remove ${file}"
                 rm ${file}
-                ((cnt++))
-            elif [[ $file == *"$chapter"* ]]
+                ((CNT++))
+            elif [[ $file == *"$CHAPTER"* ]]
             then
                 echo "Remove ${file}"
                 rm ${file}
-                ((cnt++))
+                ((CNT++))
             fi
         fi
     done
 }
 
 run() {
-    for file in ${target[@]}; do
+    for file in ${TARGET[@]}; do
         if [ -f ${file} ]
         then
             # directory
             cd ${file%/*}
 
-            if [[ -z "$chapter" ]]
+            if [[ -z "$CHAPTER" ]]
             then 
                 echo "Runned ${file}"
                 # file
                 ./${file##*/}
-                ((cnt++))
-            elif [[ $file == *"$chapter"* ]]
+                ((CNT++))
+            elif [[ $file == *"$CHAPTER"* ]]
             then
                 echo "Runned ${file}"
                 ./${file##*/}
-                ((cnt++))
+                ((CNT++))
             fi
         fi
     done
@@ -113,18 +113,18 @@ run() {
 
 check_files
 
-if [[ "$action" = "build" ]]
+if [[ "$ACTION" = "build" ]]
 then
     build
-    echo; echo "Total built: $cnt"
-elif [[ "$action" = "clean" ]]
+    echo; echo "Total built: $CNT"
+elif [[ "$ACTION" = "clean" ]]
 then
     clean
-    echo; echo "Total cleaned: $cnt"
-elif [[ "$action" = "run" ]]
+    echo; echo "Total cleaned: $CNT"
+elif [[ "$ACTION" = "run" ]]
 then
     run
-    echo; echo "Total runuted: $cnt"
+    echo; echo "Total runuted: $CNT"
 else
     echo; echo "Assign 1st argument: ( build || clean || run )"
     echo; echo "Example:"

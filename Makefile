@@ -1,32 +1,22 @@
-GO_VERSION = 1.15.5
 CONTAINER_NAME = mlgo
-DIR := 
-ACCOUNT := 
-REPO = ml_with_go
-PROJECT = /go/src/github.com/${ACCOUNT}/${REPO}
-	
+URL = https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.3.0.tar.gz
+PKGS = 0
+
+up:
+	@docker-compose up -d
+	@docker container exec -it ${CONTAINER_NAME} \
+		bash -c 'curl -L ${URL} | tar -C "/usr/local" -xz && ldconfig'
+ifneq ($(PKGS), 0)
+	@docker container exec -it ${CONTAINER_NAME} \
+		bash -c './automation.sh build'
+endif
+
 run:
-ifeq ($(DIR),)
-	$(error You must define the CURRENT PATH)
-endif
-
-ifeq ($(ACCOUNT),)
-	$(error You must define the GitHub ACCOUNT)
-endif
-
-	@docker container run -it --name=${CONTAINER_NAME} \
-		-v ${DIR}:${PROJECT} \
-		-w ${PROJECT} \
-		-e MLGO=${PROJECT} \
-		golang:${GO_VERSION} \
-		/bin/bash
-
-start:
-	@docker start ${CONTAINER_NAME}
-	@docker attach ${CONTAINER_NAME}
+	@docker container start ${CONTAINER_NAME}
+	@docker container exec -it ${CONTAINER_NAME} /bin/bash
 
 stop:
-	@docker stop ${CONTAINER_NAME}
+	@docker-compose stop
 
-del:
-	@docker rm -f ${CONTAINER_NAME}
+down:
+	@docker-compose down
