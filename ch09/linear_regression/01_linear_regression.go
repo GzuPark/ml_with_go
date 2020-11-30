@@ -29,7 +29,7 @@ func main() {
 	outDirPtr := flag.String("outDir", "", "The output directory")
 	flag.Parse()
 
-	f, err := os.Open(filepath.Join(*inDirPtr, "diabetes.csv"))
+	f, err := os.Open(filepath.Join(*inDirPtr, "diabetes_training.csv"))
 	if err != nil {
 		log.Fatal(err)
 	}

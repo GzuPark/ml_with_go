@@ -16,6 +16,8 @@ train:
 ifeq ($(DIR),)
 	$(error You must define the MODEL PATH)
 endif
+	@docker container exec ${CONTAINER_NAME} \
+		bash -c /go/src/mlgo/ch03/validation/01_split_dataset
 	@docker container run --rm \
 		-v ${DIR}/model:/tmp/model \
 		-v mlgo_data:/data \
