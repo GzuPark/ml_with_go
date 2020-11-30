@@ -1,7 +1,8 @@
 CONTAINER_NAME = mlgo
 URL = https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.3.0.tar.gz
 PKGS = 0
-IMGS := $(shell docker images -q goregtrain)
+IMG_TRAIN := $(shell docker images -q goregtrain)
+IMG_PREDICT := $(shell docker images -q goregpredict)
 
 up:
 	@docker-compose up -d
@@ -23,6 +24,9 @@ stop:
 down:
 	@docker-compose down --volumes
 	@docker volume rm mlgo_model
-ifneq ($(IMGS),)
-	@docker rmi --force ${IMGS}
+ifneq ($(IMG_TRAIN),)
+	@docker rmi --force ${IMG_TRAIN}
+endif
+ifneq ($(IMG_PREDICT),)
+	@docker rmi --force ${IMG_PREDICT}
 endif
