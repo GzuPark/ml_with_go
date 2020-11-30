@@ -104,7 +104,10 @@ $RECYCLE.BIN/
 
 [0-9][0-9]_*
 ![0-9][0-9]_*.go
-**/result/*.png
+**/model/*
+!**/model/.gitkeep
+**/result/*
+!**/result/.gitkeep
 data/clean*.csv
 data/*.db
 data/*.json
@@ -114,4 +117,4 @@ data/*training.csv
 !data/iris*
 **/prep_tf_go/*
 !**/prep_tf_go/*.*
-**/model/*
+ch09/*/goreg*

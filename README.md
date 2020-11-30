@@ -79,15 +79,24 @@
 
 </details>
 
+<details>
+<summary><strong>9장 : </strong>분석 결과 및 모델 배포하기</summary>
+
++ [선형 회귀 모델 Dockerizing](./ch09/linear_regression/) | [[How to use]](./ch09/linear_regression/README.md)
+
+</details>
+
 ## Environment
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15` (_In the container_)
+- `alpine >= 3.12` (_In the container_)
 
 #### Windows
 - Required
     - `wsl2`
     - `chocolatey`
     - `make`
+- Recommend to use __PowerShell__, not CMD
 
 #### MacOS & Linux
 - Not to need to prepare
