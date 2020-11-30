@@ -104,8 +104,7 @@ $RECYCLE.BIN/
 
 [0-9][0-9]_*
 ![0-9][0-9]_*.go
-**/model/*
-!**/model/.gitkeep
+**/model
 **/result/*
 !**/result/.gitkeep
 data/clean*.csv
