@@ -83,6 +83,7 @@
 <summary><strong>9장 : </strong>분석 결과 및 모델 배포하기</summary>
 
 + [선형 회귀 모델 Dockerizing](./ch09/linear_regression/) | [[How to use]](./ch09/linear_regression/README.md)
++ [다중 회귀 모델 Dockerizing](./ch09/multiple_regression/) | [[How to use]](./ch09/multiple_regression/README.md)
 
 </details>
 
