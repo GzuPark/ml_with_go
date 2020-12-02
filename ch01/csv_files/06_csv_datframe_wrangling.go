@@ -11,7 +11,7 @@ import (
 
 var (
 	fileName = "iris_labeled.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -24,7 +24,7 @@ func main() {
 	irisDF := dataframe.ReadCSV(irisFile)
 
 	filter := dataframe.F{
-		Colname: "species",
+		Colname:    "species",
 		Comparator: "==",
 		Comparando: "Iris-versicolor",
 	}

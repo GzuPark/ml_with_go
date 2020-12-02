@@ -6,18 +6,18 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/go-gota/gota/dataframe"
 	"gonum.org/v1/gonum/stat"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
 	"gonum.org/v1/plot/plotutil"
 	"gonum.org/v1/plot/vg"
-	"github.com/go-gota/gota/dataframe"
 )
 
 var (
 	fileName = "AirPassengers.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
-	suffix = "acf"
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
+	suffix   = "acf"
 )
 
 func main() {
@@ -66,9 +66,9 @@ func main() {
 
 func acf(x []float64, lag int) float64 {
 	xAdj := x[lag:len(x)]
-	xLag := x[0:len(x) - lag]
+	xLag := x[0 : len(x)-lag]
 
-	var numerator   float64
+	var numerator float64
 	var denominator float64
 
 	xBar := stat.Mean(x, nil)
@@ -78,7 +78,7 @@ func acf(x []float64, lag int) float64 {
 	}
 
 	for _, xVal := range x {
-		denominator += math.Pow(xVal - xBar, 2)
+		denominator += math.Pow(xVal-xBar, 2)
 	}
 
 	return numerator / denominator
@@ -88,7 +88,7 @@ func plotPath(name string) string {
 	saveName := name + suffix + ".png"
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
-			log.Fatal(err)
+		log.Fatal(err)
 	}
 	savePath := filepath.Join(dir, "result", saveName)
 

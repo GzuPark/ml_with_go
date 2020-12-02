@@ -11,7 +11,7 @@ import (
 
 var (
 	fileName = "iris.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 type centroid []float64
@@ -35,7 +35,7 @@ func main() {
 
 	for _, species := range speciesNames {
 		filter := dataframe.F{
-			Colname: "species",
+			Colname:    "species",
 			Comparator: "==",
 			Comparando: species,
 		}

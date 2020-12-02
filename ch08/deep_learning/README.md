@@ -6,7 +6,7 @@
 # build
 (docker)$ go build 01_tf_image_classification.go
 # run
-(docker)$ ./01_tf_image_classification -image=$MLGO/data/airplane.jpg
-(docker)$ ./01_tf_image_classification -image=$MLGO/data/gopher.jpg
-(docker)$ ./01_tf_image_classification -image=$MLGO/data/pug.jpg
+(docker)$ ./01_tf_image_classification -image=$MLGO/storage/data/airplane.jpg
+(docker)$ ./01_tf_image_classification -image=$MLGO/storage/data/gopher.jpg
+(docker)$ ./01_tf_image_classification -image=$MLGO/storage/data/pug.jpg
 ```

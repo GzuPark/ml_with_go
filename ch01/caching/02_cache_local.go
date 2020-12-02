@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	dbName = "embedded.db"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", dbName)
+	dbName   = "embedded.db"
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", dbName)
 )
 
 func main() {

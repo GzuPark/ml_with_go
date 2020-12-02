@@ -6,21 +6,21 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/go-gota/gota/dataframe"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
 	"gonum.org/v1/plot/vg"
-	"github.com/go-gota/gota/dataframe"
 )
 
 var (
 	fileName = "advertising.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
-	suffix = "regression_line"
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
+	suffix   = "regression_line"
 )
 
 const (
 	intercept = 7.0688
-	slope = 0.0489
+	slope     = 0.0489
 )
 
 func main() {
@@ -75,14 +75,14 @@ func main() {
 }
 
 func predict(tv float64) float64 {
-	return intercept + tv * slope
+	return intercept + tv*slope
 }
 
 func plotPath(name string) string {
 	saveName := name + suffix + ".png"
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
-			log.Fatal(err)
+		log.Fatal(err)
 	}
 	savePath := filepath.Join(dir, "result", saveName)
 

@@ -33,9 +33,9 @@ type neuralNet struct {
 
 var (
 	trainingName = "iris_training.csv"
-	testName = "iris_training.csv"
-	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
-	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+	testName     = "iris_test.csv"
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", trainingName)
+	testPath     = filepath.Join(os.Getenv("MLGO"), "storage", "data", testName)
 
 	config = neuralNetConfig{
 		inputNeurons:  4,
@@ -62,8 +62,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	inputsData := make([]float64, 4 * len(trainData))
-	labelsData := make([]float64, 3 * len(trainData))
+	inputsData := make([]float64, 4*len(trainData))
+	labelsData := make([]float64, 3*len(trainData))
 
 	var inputsIndex int
 	var labelsIndex int
@@ -114,8 +114,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	inputsData = make([]float64, 4 * len(testData))
-	labelsData = make([]float64, 3 * len(testData))
+	inputsData = make([]float64, 4*len(testData))
+	labelsData = make([]float64, 3*len(testData))
 
 	inputsIndex = 0
 	labelsIndex = 0
@@ -185,13 +185,13 @@ func (nn *neuralNet) train(x, y *mat.Dense) error {
 	s := rand.NewSource(42)
 	r := rand.New(s)
 
-	wHiddenRaw := make([]float64, nn.config.hiddenNeurons * nn.config.inputNeurons)
+	wHiddenRaw := make([]float64, nn.config.hiddenNeurons*nn.config.inputNeurons)
 	bHiddenRaw := make([]float64, nn.config.hiddenNeurons)
-	wOutRaw := make([]float64, nn.config.outputNeurons * nn.config.hiddenNeurons)
+	wOutRaw := make([]float64, nn.config.outputNeurons*nn.config.hiddenNeurons)
 	bOutRaw := make([]float64, nn.config.outputNeurons)
 
 	for _, param := range [][]float64{wHiddenRaw, bHiddenRaw, wOutRaw, bOutRaw} {
-		for i:= range param{
+		for i := range param {
 			param[i] = r.Float64()
 		}
 	}
@@ -199,9 +199,9 @@ func (nn *neuralNet) train(x, y *mat.Dense) error {
 	numData, _ := x.Dims()
 
 	wHidden := mat.NewDense(nn.config.inputNeurons, nn.config.hiddenNeurons, wHiddenRaw) // (4 x 3)
-	bHidden := mat.NewDense(1, nn.config.hiddenNeurons, bHiddenRaw) // (1 x 3)
-	wOut := mat.NewDense(nn.config.hiddenNeurons, nn.config.outputNeurons, wOutRaw) // (3 x 3)
-	bOut := mat.NewDense(1, nn.config.outputNeurons, bOutRaw) // (1 x 3)
+	bHidden := mat.NewDense(1, nn.config.hiddenNeurons, bHiddenRaw)                      // (1 x 3)
+	wOut := mat.NewDense(nn.config.hiddenNeurons, nn.config.outputNeurons, wOutRaw)      // (3 x 3)
+	bOut := mat.NewDense(1, nn.config.outputNeurons, bOutRaw)                            // (1 x 3)
 
 	output := mat.NewDense(numData, 3, nil)
 

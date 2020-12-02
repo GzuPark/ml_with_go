@@ -21,7 +21,7 @@ type CSVRecord struct {
 
 var (
 	fileName = "iris_mixed_types.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -80,7 +80,7 @@ func main() {
 			csvData = append(csvData, csvRecord)
 		}
 
-		line ++
+		line++
 	}
 
 	fmt.Printf("successfully parsed %d lines\n", len(csvData))

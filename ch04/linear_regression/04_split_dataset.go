@@ -10,12 +10,12 @@ import (
 )
 
 var (
-	fileName = "advertising.csv"
+	fileName     = "advertising.csv"
 	trainingName = "advertising_training.csv"
-	testName = "advertising_test.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
-	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
-	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+	testName     = "advertising_test.csv"
+	filePath     = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", trainingName)
+	testPath     = filepath.Join(os.Getenv("MLGO"), "storage", "data", testName)
 )
 
 func main() {
@@ -30,18 +30,18 @@ func main() {
 	trainingNum := (4 * df.Nrow()) / 5
 	testNum := df.Nrow() / 5
 
-	if trainingNum + testNum < df.Nrow() {
+	if trainingNum+testNum < df.Nrow() {
 		trainingNum++
 	}
 
 	trainingIdx := make([]int, trainingNum)
 	testIdx := make([]int, testNum)
 
-	for i:= 0; i < trainingNum; i++ {
+	for i := 0; i < trainingNum; i++ {
 		trainingIdx[i] = i
 	}
 
-	for i:= 0; i < testNum; i++ {
+	for i := 0; i < testNum; i++ {
 		testIdx[i] = trainingNum + i
 	}
 

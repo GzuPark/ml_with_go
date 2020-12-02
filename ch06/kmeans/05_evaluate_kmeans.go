@@ -6,13 +6,13 @@ import (
 	"os"
 	"path/filepath"
 
-	"gonum.org/v1/gonum/floats"
 	"github.com/go-gota/gota/dataframe"
+	"gonum.org/v1/gonum/floats"
 )
 
 var (
 	fileName = "fleet_data.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 
 	cOne = []float64{180.02, 18.29}
 	cTwo = []float64{50.05, 8.83}

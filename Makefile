@@ -6,7 +6,6 @@ IMG_PREDICT := $(shell docker images -q goregpredict)
 
 up:
 	@docker-compose up -d
-	@docker volume create mlgo_model
 	@docker container exec -it ${CONTAINER_NAME} \
 		bash -c 'curl -L ${URL} | tar -C "/usr/local" -xz && ldconfig'
 ifneq ($(PKGS), 0)
@@ -23,7 +22,6 @@ stop:
 
 down:
 	@docker-compose down --volumes
-	@docker volume rm mlgo_model
 ifneq ($(IMG_TRAIN),)
 	@docker rmi --force ${IMG_TRAIN}
 endif

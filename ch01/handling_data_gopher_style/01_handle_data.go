@@ -11,7 +11,7 @@ import (
 
 var (
 	fileName = "myfile.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	r := csv.NewReader(f)
 	records, err := r.ReadAll()
 	if err != nil {

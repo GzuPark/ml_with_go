@@ -21,10 +21,9 @@ ifeq ($(HAS_DATA), 0)
 		bash -c './01_split_dataset'
 endif
 	@docker container run --rm \
-		-v mlgo_data:/data \
-		-v mlgo_model:/tmp/model \
+		-v mlgo_storage:/storage \
 		goregtrain:linear \
-		/goregtrain -inDir=/data -outDir=/tmp/model
+		/goregtrain -inDir=/storage/data -outDir=/storage/model
 
 clean:
 	@docker container exec -w ${WORKDIR} ${CONTAINER_NAME} \

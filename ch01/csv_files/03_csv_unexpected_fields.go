@@ -11,7 +11,7 @@ import (
 
 var (
 	fileName = "iris_unexpected_fields.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {

@@ -12,8 +12,8 @@ import (
 var (
 	fileName = "loan_data.csv"
 	saveName = "clean_loan_data.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
-	savePath = filepath.Join(os.Getenv("MLGO"), "data", saveName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
+	savePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", saveName)
 )
 
 const (
@@ -59,7 +59,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		outRecord[0] = strconv.FormatFloat((score - scoreMin) / (scoreMax - scoreMin), 'f', 4, 64)
+		outRecord[0] = strconv.FormatFloat((score-scoreMin)/(scoreMax-scoreMin), 'f', 4, 64)
 
 		rate, err := strconv.ParseFloat(strings.TrimSuffix(record[1], "%"), 64)
 		if err != nil {

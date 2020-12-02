@@ -14,10 +14,11 @@ import (
 
 var (
 	trainingName = "clean_loan_training.csv"
-	testName = "clean_loan_test.csv"
-	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
-	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+	testName     = "clean_loan_test.csv"
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", trainingName)
+	testPath     = filepath.Join(os.Getenv("MLGO"), "storage", "data", testName)
 )
+
 func main() {
 	trainingData, err := base.ParseCSVToInstances(trainingPath, true)
 	if err != nil {

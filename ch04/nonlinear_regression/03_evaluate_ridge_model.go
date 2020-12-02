@@ -12,13 +12,13 @@ import (
 
 var (
 	testName = "advertising_test.csv"
-	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+	testPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", testName)
 )
 
 const (
-	intercept = 2.949
-	coefTV = 0.047
-	coefRadio = 0.180
+	intercept    = 2.949
+	coefTV       = 0.047
+	coefRadio    = 0.180
 	coefNewpaper = -0.001
 )
 
@@ -64,12 +64,12 @@ func main() {
 		}
 
 		yPredicted := predict(tvVal, radioVal, newspaperVal)
-		mAE += math.Abs(yObserved - yPredicted) / float64(len(testData))
+		mAE += math.Abs(yObserved-yPredicted) / float64(len(testData))
 	}
 
 	fmt.Printf("\nMAE = %.2f\n\n", mAE)
 }
 
 func predict(tv, radio, newspaper float64) float64 {
-	return intercept + coefTV * tv + coefRadio * radio + coefNewpaper * newspaper
+	return intercept + coefTV*tv + coefRadio*radio + coefNewpaper*newspaper
 }

@@ -6,14 +6,14 @@ import (
 	"os"
 	"path/filepath"
 
-	"gonum.org/v1/gonum/stat"
 	"github.com/go-gota/gota/dataframe"
 	"github.com/montanaflynn/stats"
+	"gonum.org/v1/gonum/stat"
 )
 
 var (
 	fileName = "iris.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 
 	meanVal := stat.Mean(sepalLength, nil)
 	modeVal, modeCount := stat.Mode(sepalLength, nil)
-	
+
 	medianVal, err := stats.Median(sepalLength)
 	if err != nil {
 		log.Fatal(err)

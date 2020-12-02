@@ -10,15 +10,15 @@ import (
 
 var (
 	fileName = "iris_without_header.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
-    if err != nil {
-            log.Fatal(err)
-    }
-    fmt.Println(dir)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(dir)
 
 	f, err := os.Open(filePath)
 	if err != nil {

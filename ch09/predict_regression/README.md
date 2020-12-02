@@ -1,4 +1,4 @@
-## 모델 배포하기
+## Docker로 모델 예측 수행하기
 `automation.sh`에서 작업이 진행되지 않도록 예외 처리를 한 상태이고, binary file로 build를 한 후 `goregpredict:latest` docker image를 생성
 
 #### How to use

@@ -17,22 +17,17 @@ predict:
 ifeq ($(DIR),)
 	$(error You must define the DIR variable as CURRENT PATH)
 endif
-ifeq ($(MODEL), 0)
-	$(error You must select 'linear' or 'multiple')
-endif
 ifneq ($(MODEL), 0)
 	@docker container run --rm \
-		-v mlgo_data:/data \
-		-v mlgo_model:/tmp/model \
+		-v mlgo_storage:/storage \
 		goregtrain:$(MODEL) \
-		/goregtrain -inDir=/data -outDir=/tmp/model
+		/goregtrain -inDir=/storage/data -outDir=/storage/model
 endif
 	@docker container run --rm \
-		-v ${DIR}/attributes:/tmp/attributes \
 		-v ${DIR}/result:/tmp/result \
-		-v mlgo_model:/tmp/model \
+		-v mlgo_storage:/tmp/storage \
 		goregpredict:latest \
-		/goregpredict -inModelDir=/tmp/model -inVarDir=/tmp/attributes -outDir=/tmp/result
+		/goregpredict -inModelDir=/tmp/storage/model -inVarDir=/tmp/storage/attributes -outDir=/tmp/result
 
 clean:
 	@docker container exec -w ${WORKDIR} ${CONTAINER_NAME} \

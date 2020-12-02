@@ -8,7 +8,7 @@ services:
       MLGO: /go/src/mlgo
     volumes:
       - "./:/go/src/mlgo"
-      - "mlgo_data:/go/src/mlgo/data"
+      - "mlgo_storage:/go/src/mlgo/storage"
     working_dir: /go/src/mlgo
     networks:
       - mlgo_net
@@ -21,10 +21,10 @@ networks:
     driver: bridge
 
 volumes:
-  mlgo_data:
-    name: mlgo_data
+  mlgo_storage:
+    name: mlgo_storage
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: ./data
+      device: ./storage

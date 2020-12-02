@@ -9,18 +9,18 @@ import (
 	"path/filepath"
 	"strconv"
 
+	"github.com/go-gota/gota/dataframe"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
 	"gonum.org/v1/plot/vg"
-	"github.com/go-gota/gota/dataframe"
 )
 
 var (
 	fileName = "AirPassengers.csv"
 	saveName = "log_diff_series.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
-	savePath = filepath.Join(os.Getenv("MLGO"), "data", saveName)
-	suffix = "log_diff_passengers_ts"
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
+	savePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", saveName)
+	suffix   = "log_diff_passengers_ts"
 )
 
 func main() {
@@ -35,17 +35,17 @@ func main() {
 	passengersVals := df.Col("AirPassengers").Float()
 	timeVals := df.Col("time").Float()
 
-	pts := make(plotter.XYs, df.Nrow() - 1)
+	pts := make(plotter.XYs, df.Nrow()-1)
 
 	var differenced [][]string
 	differenced = append(differenced, []string{"time", "log_differenced_passengers"})
 
 	for i := 1; i < len(passengersVals); i++ {
-		pts[i - 1].X = timeVals[i]
-		pts[i - 1].Y = math.Log(passengersVals[i]) - math.Log(passengersVals[i - 1])
+		pts[i-1].X = timeVals[i]
+		pts[i-1].Y = math.Log(passengersVals[i]) - math.Log(passengersVals[i-1])
 		differenced = append(differenced, []string{
 			strconv.FormatFloat(timeVals[i], 'f', -1, 64),
-			strconv.FormatFloat(math.Log(passengersVals[i]) - math.Log(passengersVals[i - 1]), 'f', -1, 64),
+			strconv.FormatFloat(math.Log(passengersVals[i])-math.Log(passengersVals[i-1]), 'f', -1, 64),
 		})
 	}
 
@@ -88,7 +88,7 @@ func plotPath(name string) string {
 	saveName := name + suffix + ".png"
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
-			log.Fatal(err)
+		log.Fatal(err)
 	}
 	savePath := filepath.Join(dir, "result", saveName)
 

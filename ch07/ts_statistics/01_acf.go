@@ -13,7 +13,7 @@ import (
 
 var (
 	fileName = "AirPassengers.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -36,9 +36,9 @@ func main() {
 
 func acf(x []float64, lag int) float64 {
 	xAdj := x[lag:len(x)]
-	xLag := x[0:len(x) - lag]
+	xLag := x[0 : len(x)-lag]
 
-	var numerator   float64
+	var numerator float64
 	var denominator float64
 
 	xBar := stat.Mean(x, nil)
@@ -48,7 +48,7 @@ func acf(x []float64, lag int) float64 {
 	}
 
 	for _, xVal := range x {
-		denominator += math.Pow(xVal - xBar, 2)
+		denominator += math.Pow(xVal-xBar, 2)
 	}
 
 	return numerator / denominator

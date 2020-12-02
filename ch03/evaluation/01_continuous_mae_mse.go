@@ -13,7 +13,7 @@ import (
 
 var (
 	fileName = "continuous_data.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 		}
 
 		if line == 1 {
-			line ++
+			line++
 			continue
 		}
 
@@ -62,8 +62,8 @@ func main() {
 	var mSE float64
 
 	for idx, oVal := range observed {
-		mAE += math.Abs(oVal - predicted[idx]) / float64(len(observed))
-		mSE += math.Pow(oVal - predicted[idx], 2) / float64(len(observed))
+		mAE += math.Abs(oVal-predicted[idx]) / float64(len(observed))
+		mSE += math.Pow(oVal-predicted[idx], 2) / float64(len(observed))
 	}
 
 	fmt.Printf("\nMAE = %.2f\n", mAE)

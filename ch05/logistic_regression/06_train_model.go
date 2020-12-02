@@ -16,7 +16,7 @@ import (
 
 var (
 	trainingName = "clean_loan_training.csv"
-	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", trainingName)
 )
 
 func main() {
@@ -34,8 +34,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	featureData := make([]float64, 2 * (len(rawData) - 1))
-	labels := make([]float64, len(rawData) - 1)
+	featureData := make([]float64, 2*(len(rawData)-1))
+	labels := make([]float64, len(rawData)-1)
 
 	var featureIndex int
 
@@ -50,7 +50,7 @@ func main() {
 		}
 
 		featureData[featureIndex] = featureVal
-		featureData[featureIndex + 1] = 1.0
+		featureData[featureIndex+1] = 1.0
 		featureIndex += 2
 
 		labelVal, err := strconv.ParseFloat(record[1], 64)
@@ -58,10 +58,10 @@ func main() {
 			log.Fatal(err)
 		}
 
-		labels[idx - 1] = labelVal
+		labels[idx-1] = labelVal
 	}
 
-	features := mat.NewDense(len(rawData) - 1, 2, featureData)
+	features := mat.NewDense(len(rawData)-1, 2, featureData)
 	weights := logisticRegression(features, labels, 1000, 0.3)
 
 	formula := "p = 1 / ( 1 + exp(- m1 * FICO.score - m2) )"
@@ -92,7 +92,7 @@ func logisticRegression(features *mat.Dense, labels []float64, numSteps int, lea
 		for idx, label := range labels {
 			featureRow := mat.Row(nil, idx, features)
 
-			pred := sigmoid(featureRow[0] * weights[0] + featureRow[1] * weights[1])
+			pred := sigmoid(featureRow[0]*weights[0] + featureRow[1]*weights[1])
 			predError := label - pred
 			sumError += math.Pow(predError, 2)
 

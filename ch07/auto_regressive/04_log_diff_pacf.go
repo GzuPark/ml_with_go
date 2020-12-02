@@ -6,18 +6,18 @@ import (
 	"path/filepath"
 	"strconv"
 
+	"github.com/go-gota/gota/dataframe"
+	"github.com/sajari/regression"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
 	"gonum.org/v1/plot/plotutil"
 	"gonum.org/v1/plot/vg"
-	"github.com/go-gota/gota/dataframe"
-	"github.com/sajari/regression"
 )
 
 var (
 	fileName = "log_diff_series.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
-	suffix = "log_diff_pacf"
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
+	suffix   = "log_diff_pacf"
 )
 
 func main() {
@@ -78,7 +78,7 @@ func pacf(x []float64, lag int) float64 {
 		laggedVariables := make([]float64, lag)
 
 		for idx := 1; idx <= lag; idx++ {
-			laggedVariables[idx - 1] = x[lag + i - idx]
+			laggedVariables[idx-1] = x[lag+i-idx]
 		}
 
 		r.Train(regression.DataPoint(xVal, laggedVariables))
@@ -93,7 +93,7 @@ func plotPath(name string) string {
 	saveName := name + suffix + ".png"
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
-			log.Fatal(err)
+		log.Fatal(err)
 	}
 	savePath := filepath.Join(dir, "result", saveName)
 

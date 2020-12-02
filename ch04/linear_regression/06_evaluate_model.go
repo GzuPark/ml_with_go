@@ -14,9 +14,9 @@ import (
 
 var (
 	trainingName = "advertising_training.csv"
-	testName = "advertising_test.csv"
-	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
-	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+	testName     = "advertising_test.csv"
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", trainingName)
+	testPath     = filepath.Join(os.Getenv("MLGO"), "storage", "data", testName)
 )
 
 func main() {
@@ -51,7 +51,7 @@ func main() {
 		}
 
 		tvVal, err := strconv.ParseFloat(record[0], 64)
-		if err != nil{
+		if err != nil {
 			log.Fatal(err)
 		}
 
@@ -93,7 +93,7 @@ func main() {
 		}
 
 		yPredicted, err := r.Predict([]float64{tvVal})
-		mAE += math.Abs(yObserved - yPredicted) / float64(len(testData))
+		mAE += math.Abs(yObserved-yPredicted) / float64(len(testData))
 	}
 
 	fmt.Printf("MAE = %.2f\n\n", mAE)

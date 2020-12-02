@@ -13,7 +13,7 @@ const citiBikeURL = "https://gbfs.citibikenyc.com/gbfs/en/station_status.json"
 
 var (
 	fileName = "citibike.json"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 type stationData struct {

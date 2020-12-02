@@ -13,7 +13,7 @@ import (
 
 var (
 	testName = "clean_loan_test.csv"
-	testPath = filepath.Join(os.Getenv("MLGO"), "data", testName)
+	testPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", testName)
 )
 
 const (
@@ -78,7 +78,7 @@ func main() {
 }
 
 func predict(score float64) float64 {
-	p := 1 / (1 + math.Exp(-1 * m1 * score -1 * m2))
+	p := 1 / (1 + math.Exp(-1*m1*score-1*m2))
 
 	if p >= 0.5 {
 		return 1.0

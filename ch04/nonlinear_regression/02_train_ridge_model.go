@@ -14,7 +14,7 @@ import (
 
 var (
 	trainingName = "advertising_training.csv"
-	trainingPath = filepath.Join(os.Getenv("MLGO"), "data", trainingName)
+	trainingPath = filepath.Join(os.Getenv("MLGO"), "storage", "data", trainingName)
 )
 
 func main() {

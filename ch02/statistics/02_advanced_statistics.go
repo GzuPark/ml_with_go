@@ -6,14 +6,14 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/go-gota/gota/dataframe"
 	"gonum.org/v1/gonum/floats"
 	"gonum.org/v1/gonum/stat"
-	"github.com/go-gota/gota/dataframe"
 )
 
 var (
 	fileName = "iris.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {

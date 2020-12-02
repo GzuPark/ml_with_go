@@ -12,7 +12,7 @@ import (
 
 var (
 	fileName = "labeled.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -79,8 +79,8 @@ func main() {
 			}
 		}
 
-		precision := float64(truePos) / float64(truePos + falsePos)
-		recall    := float64(truePos) / float64(truePos + falseNeg)
+		precision := float64(truePos) / float64(truePos+falsePos)
+		recall := float64(truePos) / float64(truePos+falseNeg)
 
 		fmt.Printf("\nPrecision (class %d) = %.2f\n", class, precision)
 		fmt.Printf("Recall    (class %d) = %.2f\n", class, recall)

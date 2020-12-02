@@ -13,7 +13,7 @@ import (
 
 var (
 	fileName = "AirPassengers.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -48,7 +48,7 @@ func pacf(x []float64, lag int) float64 {
 		laggedVariables := make([]float64, lag)
 
 		for idx := 1; idx <= lag; idx++ {
-			laggedVariables[idx - 1] = x[lag + i - idx]
+			laggedVariables[idx-1] = x[lag+i-idx]
 		}
 
 		r.Train(regression.DataPoint(xVal, laggedVariables))

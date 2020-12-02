@@ -11,7 +11,7 @@ import (
 
 var (
 	fileName = "iris_without_header.csv"
-	filePath = filepath.Join(os.Getenv("MLGO"), "data", fileName)
+	filePath = filepath.Join(os.Getenv("MLGO"), "storage", "data", fileName)
 )
 
 func main() {
@@ -24,7 +24,7 @@ func main() {
 	reader := csv.NewReader(f)
 	reader.FieldsPerRecord = -1
 
-	// rows를 성공적으로 읽으면 데이터에 저장 
+	// rows를 성공적으로 읽으면 데이터에 저장
 	var rawCSVData [][]string
 
 	for {
