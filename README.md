@@ -85,6 +85,7 @@
 + [선형 회귀 모델 Dockerizing](./ch09/linear_regression/) | [[How to use]](./ch09/linear_regression/README.md)
 + [다중 회귀 모델 Dockerizing](./ch09/multiple_regression/) | [[How to use]](./ch09/multiple_regression/README.md)
 + [Docker로 모델 예측 수행하기](./ch09/predict_regression/) | [[How to use]](./ch09/predict_regression/README.md)
++ [확장 가능하고 재현 가능한 머신 러닝 파이프라인 구축하기](./ch09/building_scalable_pipleline/)
 
 </details>
 
@@ -92,6 +93,7 @@
 - `Docker >= 19.03.8` (_Recommended_)
 - `Golang >= 1.15` (_In the container_)
 - `alpine >= 3.12` (_In the container_)
+- `pachyderm == 1.11.7` (_only ch09_)
 
 #### Windows
 - Required
