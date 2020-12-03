@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"os"
 	"path/filepath"
 )
 
@@ -46,23 +45,21 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if err := filepath.Walk(*inVarDirPtr, func(path string, info os.FileInfo, err error) error {
-		if info.IsDir() {
-			return nil
-		}
-
-		f, err := ioutil.ReadFile(filepath.Join(*inVarDirPtr, info.Name()))
+	attrFiles := []string{"1.json", "2.json", "3.json"}
+	for _, fileName := range attrFiles {
+		inVarPath := filepath.Join(*inVarDirPtr, fileName)
+		f, err := ioutil.ReadFile(inVarPath)
 		if err != nil {
-			return err
+			log.Fatal(err)
 		}
 
 		var predictionData PredictionData
 		if err := json.Unmarshal(f, &predictionData); err != nil {
-			return err
+			log.Fatal(err)
 		}
 
 		if err := Predict(&modelInfo, &predictionData); err != nil {
-			return err
+			log.Fatal(err)
 		}
 
 		outputData, err := json.MarshalIndent(predictionData, "", "    ")
@@ -70,14 +67,10 @@ func main() {
 			log.Fatal(err)
 		}
 
-		fileName := "predicted_" + info.Name()
-		if err := ioutil.WriteFile(filepath.Join(*outDirPtr, fileName), outputData, 0644); err != nil {
+		resFileName := "predicted_" + fileName
+		if err := ioutil.WriteFile(filepath.Join(*outDirPtr, resFileName), outputData, 0644); err != nil {
 			log.Fatal(err)
 		}
-
-		return nil
-	}); err != nil {
-		log.Fatal(err)
 	}
 }
 
