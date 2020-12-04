@@ -2,19 +2,24 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"os"
 
-	_ "github.com/lib/pq"
+	 _ "github.com/lib/pq"
 )
 
 func main() {
-	pgURL := os.Getenv("PGURL")
-	if pgURL == "" {
-		log.Fatal("PGURL empty")
-	}
+	pgHost := os.Getenv("PGHOST")
+	pgDB := os.Getenv("PGDATABASE")
+	pgUser := os.Getenv("PGUSER")
+	pgPW := os.Getenv("PGPASSWORD")
 
-	db, err := sql.Open("postres", pgURL)
+	var connection string = fmt.Sprintf(
+		"host=%s dbname=%s user=%s password=%s sslmode=disable", 
+		pgHost, pgDB, pgUser, pgPW)
+
+	db, err := sql.Open("postgres", connection)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -24,4 +29,6 @@ func main() {
 	if err := db.Ping(); err != nil {
 		log.Fatal(err)
 	}
+
+	fmt.Println("Success to connect 'iris' database.")
 }

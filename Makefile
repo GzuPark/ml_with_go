@@ -8,6 +8,7 @@ up:
 	@docker-compose up -d
 	@docker container exec -it ${CONTAINER_NAME} \
 		bash -c 'curl -L ${URL} | tar -C "/usr/local" -xz && ldconfig'
+	@./init_postgres.sh
 ifneq ($(PKGS), 0)
 	@docker container exec -it ${CONTAINER_NAME} \
 		bash -c './automation.sh build'

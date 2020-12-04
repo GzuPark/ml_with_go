@@ -1,11 +1,31 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:13.1
+    container_name: mlgo_postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - "mlgo_storage:/storage"
+      - "mlgo_postgres_db:/var/lib/postgresql/data"
+    networks:
+      - mlgo_net
+
   mlgo:
     image: golang:1.15.5
     container_name: mlgo
     environment:
       MLGO: /go/src/mlgo
+      PGHOST: postgres
+      PGDATABASE: postgres
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    links:
+      - postgres
     volumes:
       - "./:/go/src/mlgo"
       - "mlgo_storage:/go/src/mlgo/storage"
@@ -28,3 +48,6 @@ volumes:
       o: bind
       type: none
       device: ./storage
+
+  mlgo_postgres_db:
+    name: mlgo_postgres_db
