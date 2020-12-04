@@ -113,7 +113,9 @@ $RECYCLE.BIN/
 **/data/*.json
 **/data/*diff*.csv
 **/data/*test.csv
+!**/data/iris_test.csv
 **/data/*training.csv
+!**/data/iris_training.csv
 !**/data/iris*
 **/prep_tf_go/*
 !**/prep_tf_go/*.*

@@ -29,3 +29,4 @@ endif
 ifneq ($(IMG_PREDICT),)
 	@docker rmi --force ${IMG_PREDICT}
 endif
+	@./clean_rest.sh
