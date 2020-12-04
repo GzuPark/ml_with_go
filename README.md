@@ -97,6 +97,7 @@
 - `wsl2` (_Only Windows_) :point_right: [설치 가이드](https://docs.microsoft.com/ko-kr/windows/wsl/install-win10)
     - Use __wsl__ terminal, not CMD or PowerShell on Windows
 - `Golang >= 1.15` (_In the container_)
+- `PostgreSQL >= 13.1` (_In the container_)
 - `alpine >= 3.12` (_In the container_)
 - `pachyderm ~= 1.11.7` (_only ch09_)
 
