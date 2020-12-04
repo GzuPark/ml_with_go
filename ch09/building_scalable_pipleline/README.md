@@ -1,13 +1,16 @@
-## 확장 가능하고 재현 가능한 머신 러닝 파이프라인 구축하기
+## 머신 러닝 파이프라인 구축하기
 [Pachderm](https://www.pachyderm.com/)은 [Kubernetes](https://kubernetes.io/)를 사용하는 빅데이터 플랫폼으로 데이터 이력 관리가 용이하고, Docker image를 사용한 파이프라인을 구성하는 것이 특징이다. 로컬 환경에서 실습하기 위해 Kubernetes를 대신하여 [Minikube](https://minikube.sigs.k8s.io/docs/)를 이용하고, 앞서 만들었던 [선형 회귀 모델](../linear_regression/README.md), [다중 회귀 모델](../multiple_regression/README.md) 그리고 [회귀 모델 예측](../predict_regression/README.md)에서 만든 이미지들을 사용한다.
 
 ###### _Updated: 2020/12/02_
 
+---
+
 ### Contents
 - [Environment](#environment)
-    - [All](#all)
-    - [MacOS](#macos)
-    - [Windows or Debian-based Linux](#windows-or-debian-based-linux)
+- [Preparation](#preparation)
+    - [Docker images](#docker-images)
+    - [Install Minikube](#install-minikube)
+    - [Install Pachyderm](#install-pachyderm)
 - [How to use](#how-to-use)
     - [Deploy](#deploy)
     - [Run with Go files](#run-with-go-files)
@@ -15,13 +18,19 @@
     - [Useful pachctl command](#useful-pachctl-command)
     - [Undeploy](#undeploy)
 
+---
+
 ### Environment
 - `Docker Desktop >= 2.5.0.1` (_Recommended_)
 - `minikube ~= 1.15.1` (_Recommended_)
 - `pachyderm ~= 1.11.7` (_Required_)
     - Update가 활발하게 진행되므로 version에 따라 실행이 안될 수 있음
 
-#### All
+---
+
+### Preparation
+
+#### Docker images
 - __(_Option_)__ [Docker Hub](https://hub.docker.com/)에 가입하고, `docker images`를 실행하여 앞서 만든 이미지들을 push 해야함
 - Tagging docker images
     ```bash
@@ -47,15 +56,19 @@
         - [goregtrain](https://hub.docker.com/repository/docker/gzupark/goregtrain)
         - [goregpredict](https://hub.docker.com/repository/docker/gzupark/goregpredict)
 
-#### MacOS
+#### Install Minikube
 - __(중요)__ 만약 MacOS BigSur로 운영체제를 업데이트했다면, MacOS CTL을 재설치 [issue](https://apple.stackexchange.com/a/406529)
 - Minikube [설치](https://minikube.sigs.k8s.io/docs/start/)
     ```bash
-    (OS)$ brew install minikube
+    (MacOS)$ brew install minikube
+
+    (Win, Linux)$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    (Win, Linux)$ sudo install minikube-linux-amd64 /usr/local/bin/minikube
     ```
 - Minikube 실행 및 확인
     ```bash
     (OS)$ minikube start
+
     # When you finish starting precess
     (OS)$ docker ps  # check running containers
     ```
@@ -63,9 +76,15 @@
     ```bash
     (OS)$ minikube kubectl -- get po -A
     ```
+
+#### Install Pachyderm
 - Pachyderm `1.11.x` [설치](https://www.pachyderm.com/getting-started/)
     ```bash
     (OS)$ brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@1.11
+
+    (Win, Linux)$ curl -o /tmp/pachctl.deb \
+        -L https://github.com/pachyderm/pachyderm/releases/download/v1.11.7/pachctl_1.11.7_amd64.deb && sudo dpkg \
+        -i /tmp/pachctl.deb
     ```
 - Pachyderm 확인
     ```bash
@@ -73,8 +92,7 @@
     # 1.11.7
     ```
 
-#### Windows or Debian-based Linux
-WIP
+---
 
 ### How to use
 [Run with Go files](#run-with-go-files)에서 소개하는 것은 `.go` 파일을 빌드하여 실행하는 것이고, `pachctl`을 활용한 방법은 [pachctl](./pachctl/README.md) 디렉토리를 참고
@@ -113,7 +131,8 @@ WIP
 - Create repositories
     ```bash
     # build
-    (OS)$ make compile GOOS=darwin GOFILE=01_create_repository.go
+    (MacOS)$ make compile GOOS=darwin GOFILE=01_create_repository.go
+    (Win, Linux)$ make compile GOOS=linux GOFILE=01_create_repository.go
 
     # run
     (OS)$ ./01_create_repository
@@ -121,7 +140,8 @@ WIP
 - Put files to repositories
     ```bash
     # build
-    (OS)$ make compile GOOS=darwin GOFILE=02_put_file.go
+    (MacOS)$ make compile GOOS=darwin GOFILE=02_put_file.go
+    (Win, Linux)$ make compile GOOS=linux GOFILE=02_put_file.go
 
     # run
     (OS)$ ./02_put_file
@@ -129,7 +149,8 @@ WIP
 - Create & update model pipeline
     ```bash
     # build
-    (OS)$ make compile GOOS=darwin GOFILE=03_create_model_pipeline.go
+    (MacOS)$ make compile GOOS=darwin GOFILE=03_create_model_pipeline.go
+    (Win, Linux)$ make compile GOOS=linux GOFILE=03_create_model_pipeline.go
 
     # run
     (OS)$ ./03_create_model_pipeline -tag <linear or multiple> -user <Docker Hub ID>
@@ -164,7 +185,8 @@ WIP
 - Create prediction pipeline
     ```bash
     # build
-    (OS)$ make compile GOOS=darwin GOFILE=04_create_predict_pipeline.go
+    (MacOS)$ make compile GOOS=darwin GOFILE=04_create_predict_pipeline.go
+    (Win, Linux)$ make compile GOOS=linux GOFILE=04_create_predict_pipeline.go
 
     # run
     (OS)$ ./04_create_predict_pipeline -user <Docker Hub ID>

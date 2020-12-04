@@ -5,14 +5,19 @@
 ```bash
 # compile
 (os)$ make compile
+
 # build docker image
 (os)$ make build
+
 # train a model
 (os)$ make train
+
 # split diabetes dataset before train a model
 (os)$ make train HAS_DATA=0
+
 # remove a binary file
 (os)$ make clean
+
 # process all
 (os)$ make
 ```

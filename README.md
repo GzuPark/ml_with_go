@@ -1,5 +1,6 @@
 # Machine Learning with Go
 - Go를 활용한 머신 러닝 책을 docker 환경으로 구성하여 실습
+- Pachyderm을 사용하여 pipeline 구축 실습
 - 특히, 버전이 맞지 않아 [책](http://acornpub.co.kr/book/ml-with-go)과 [코드](https://github.com/PacktPublishing/Machine-Learning-With-Go)를 그대로 실행하지 못했던 것을 수정
 
 ## Contents
@@ -85,26 +86,19 @@
 + [선형 회귀 모델 Dockerizing](./ch09/linear_regression/) | [[How to use]](./ch09/linear_regression/README.md)
 + [다중 회귀 모델 Dockerizing](./ch09/multiple_regression/) | [[How to use]](./ch09/multiple_regression/README.md)
 + [Docker로 모델 예측 수행하기](./ch09/predict_regression/) | [[How to use]](./ch09/predict_regression/README.md)
-+ [확장 가능하고 재현 가능한 머신 러닝 파이프라인 구축하기](./ch09/building_scalable_pipleline/) | [[How to use]](./ch09/building_scalable_pipleline/README.md)
++ [머신 러닝 파이프라인 구축하기](./ch09/building_scalable_pipleline/) (_Required Pachyderm_) | [[How to use]](./ch09/building_scalable_pipleline/README.md)
 
 </details>
 
 ## Environment
 - `Docker Desktop >= 2.5.0.1` (_Recommended_)
 - `Docker >= 19.03.8` (_Recommended_)
+- `make` (_Required_)
+- `wsl2` (_Only Windows_) :point_right: [설치 가이드](https://docs.microsoft.com/ko-kr/windows/wsl/install-win10)
+    - Use __wsl__ terminal, not CMD or PowerShell on Windows
 - `Golang >= 1.15` (_In the container_)
 - `alpine >= 3.12` (_In the container_)
 - `pachyderm ~= 1.11.7` (_only ch09_)
-
-#### Windows
-- Required
-    - `wsl2`
-    - `chocolatey`
-    - `make`
-- Recommend to use __PowerShell__, not CMD
-
-#### MacOS or Linux
-- Not to need to prepare
 
 ## How to use
 
@@ -113,6 +107,7 @@
     ```bash
     # Default
     (os)$ make up
+
     # With build go binaries
     (os)$ make up PKGS=1
     ```
@@ -133,6 +128,7 @@
 ```bash
 (docker)$ cd tutorial_code_location
 (docker)$ go build tutorial.go
+
 # example
 (docker)$ go build 01_read_csv_file.go
 ```
@@ -141,6 +137,7 @@
 ```bash
 (docker)$ cd tutorial_code_location
 (docker)$ ./tutorial
+
 # example
 (docker)$ ./01_read_csv_file
 ```
@@ -149,15 +146,20 @@
 ```bash
 # build in anywhere
 (docker)$ $MLGO/automation.sh build
-# build specific chapter in anywhere
+
+# possible from ch01 to ch08
 (docker)$ $MLGO/automation.sh build ch01
+
 # clean up binary files in anywhere
 (docker)$ $MLGO/automation.sh clean
-# clean up specific chapter in anywhere
+
+# possible from ch01 to ch08 except deep_learning
 (docker)$ $MLGO/automation.sh clean ch01
+
 # execute binary files in anywhere
 (docker)$ $MLGO/automation.sh run
-# execute specific chapter in anywhere
+
+# possible from ch01 to ch08 except deep_learning
 (docker)$ $MLGO/automation.sh run ch01
 ```
 

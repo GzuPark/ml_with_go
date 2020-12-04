@@ -5,16 +5,22 @@
 ```bash
 # compile
 (os)$ make compile
+
 # build docker image
 (os)$ make build
+
 # predict a model
-(os)$ make predict DIR=$(PWD)
+(os)$ make predict DIR=${PWD}
+
 # predict linear regression model
-(os)$ make predict DIR=$(PWD) MODEL=linear
+(os)$ make predict DIR=${PWD} MODEL=linear
+
 # predict mutiple regression model
-(os)$ make predict DIR=$(PWD) MODEL=multiple
+(os)$ make predict DIR=${PWD} MODEL=multiple
+
 # remove a binary file
 (os)$ make clean
+
 # process all
-(os)$ make DIR=$(PWD)
+(os)$ make DIR=${PWD}
 ```
