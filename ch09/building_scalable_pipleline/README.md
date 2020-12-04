@@ -245,7 +245,7 @@
 ```bash
 (OS)$ pachctl undeploy
 # Very important to disconnect port forwarding
-(OS)$ kill -9 $(ps u | grep 'pachctl port-forward' | grep -v color | awk '{print $2}')
+(OS)$ kill -9 $(ps -ef | grep 'pachctl port-forward' | grep -v color | awk '{print $2}')
 ```
 
 #### Clean up
@@ -254,7 +254,7 @@
 
 # Run to undeploy process
 (OS)$ pachctl undeploy
-(OS)$ kill -9 $(ps u | grep 'pachctl port-forward' | grep -v color | awk '{print $2}')
+(OS)$ kill -9 $(ps -ef | grep 'pachctl port-forward' | grep -v color | awk '{print $2}')
 
 (OS)$ rm ~/.pachyderm/config.json
 (OS)$ minikube delete
