@@ -1,0 +1,26 @@
+{
+    "pipeline": {
+      "name": "model"
+    },
+    "transform": {
+      "image": "gzupark/goregtrain:multiple",
+      "cmd": [
+        "/goregtrain",
+        "-inDir=/pfs/training",
+        "-outDir=/pfs/out"
+      ]
+    },
+    "parallelism_spec": {
+      "constant": "1"
+    },
+    "output_branch": "master",
+    "input": {
+      "pfs": {
+        "name": "training",
+        "repo": "training",
+        "branch": "master",
+        "glob": "/"
+      }
+    }
+  }
+  
