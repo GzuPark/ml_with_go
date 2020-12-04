@@ -24,30 +24,6 @@ func main() {
 	}
 	defer c.Close()
 
-	// https://godoc.org/github.com/pachyderm/pachyderm/src/client#APIClient.CreatePipeline
-	// if err := c.CreatePipeline(
-	// 	"prediction",                   // name of pipeline
-	// 	*user + "/goregpredict:latest", // docker image
-	// 	[]string{
-	// 		"/goregpredict",
-	// 		"-inModelDir=/pfs/model",
-	// 		"-inVarDir=/pfs/attributes",
-	// 		"-outDir=/pfs/out",
-	// 	},                              // command run
-	// 	[]string{},                     // stdin
-	// 	&pps.ParallelismSpec{
-	// 		Constant: 1,
-	// 	},                              // parallelism
-	// 	client.NewCrossInput(
-	// 		client.NewPFSInput("attributes", "/*"),
-	// 		client.NewPFSInput("model", "/"),
-	// 	),
-	// 	"master",
-	// 	true,
-	// ); err != nil {
-	// 	log.Fatal(err)
-	// }
-
 	// c.PpsAPIClient.CreatePipeline()
 	// https://github.com/pachyderm/pachyderm/blob/dfe62153c8cfb39331b0034c2bf916f2da62f1b7/src/client/pps.go#L643
 	// type CreatePipelineRequest struct {}
