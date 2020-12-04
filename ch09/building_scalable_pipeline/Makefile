@@ -1,5 +1,5 @@
 CONTAINER_NAME = mlgo
-WORKDIR = /go/src/mlgo/ch09/building_scalable_pipleline
+WORKDIR = /go/src/mlgo/ch09/building_scalable_pipeline
 GOOS :=
 GOFILE :=
 OS_LIST = linux darwin windows

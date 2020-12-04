@@ -86,7 +86,7 @@
 + [선형 회귀 모델 Dockerizing](./ch09/linear_regression/) | [[How to use]](./ch09/linear_regression/README.md)
 + [다중 회귀 모델 Dockerizing](./ch09/multiple_regression/) | [[How to use]](./ch09/multiple_regression/README.md)
 + [Docker로 모델 예측 수행하기](./ch09/predict_regression/) | [[How to use]](./ch09/predict_regression/README.md)
-+ [머신 러닝 파이프라인 구축하기](./ch09/building_scalable_pipleline/) (_Required Pachyderm_) | [[How to use]](./ch09/building_scalable_pipleline/README.md)
++ [머신 러닝 파이프라인 구축하기](./ch09/building_scalable_pipeline/) (_Required Pachyderm_) | [[How to use]](./ch09/building_scalable_pipeline/README.md)
 
 </details>
 
